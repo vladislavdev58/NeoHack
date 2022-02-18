@@ -1,0 +1,25 @@
+@import "../../../scss/variables";
+
+.input {
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__field {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: $main-color;
+    border: 2px solid transparent;
+    border-radius: 6px;
+
+    &_light {
+      background-color: #fff;
+    }
+
+    &_error {
+      border-color: $warning-color;
+    }
+  }
+}
