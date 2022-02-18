@@ -3,5 +3,8 @@
 .layout-sidebar {
   display: grid;
   grid-template-columns: $width-sidebar 1fr;
-  column-gap: 32px;
+
+  &__content {
+    padding: 32px;
+  }
 }

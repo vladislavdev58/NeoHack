@@ -8,7 +8,9 @@ export const LayoutAsSidebar: FC = ({children}) => {
         <MainLayout>
             <div className="layout-sidebar">
                 <Sidebar/>
-                {children}
+                <div className="layout-sidebar__content">
+                    {children}
+                </div>
             </div>
         </MainLayout>
     )
