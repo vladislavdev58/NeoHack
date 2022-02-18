@@ -35,7 +35,7 @@ export const FormLogin = () => {
                 {({errors}) => (
                     <Form>
                         <Input placeholder="E-mail" type="email" name="email" error={errors.email} theme="light"/>
-                        <Input placeholder="Password" type="password" name="password" error={errors.password}
+                        <Input placeholder="Пароль" type="password" name="password" error={errors.password}
                                theme="light"/>
                         <Button>Вход</Button>
                     </Form>
