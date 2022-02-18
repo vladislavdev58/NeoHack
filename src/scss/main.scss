@@ -1,0 +1,49 @@
+@import "./normalize.css";
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 22px;
+  color: $text-color;
+  background: $main-color;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0;
+
+  @media (min-width: 980px) {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+a{
+  color: $secondary-color;
+  transition: all .2s linear;
+
+  &:hover {
+    color: $secondary-color-light;
+  }
+
+  &:active {
+    color: $secondary-color-dark;
+  }
+}
+
+p.message_error {
+  margin: 0;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 32px;
+  color: $warning-color;
+}

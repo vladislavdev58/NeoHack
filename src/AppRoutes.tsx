@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import {Routes, Route, Navigate} from 'react-router-dom'
 import {AuthPage} from './pages/AuthPage'
 
 export const AppRoutes = () => {
@@ -13,7 +13,8 @@ export const AppRoutes = () => {
     // Если нет
     return (
         <Routes>
-            <Route path="/" element={<AuthPage/>} />
+            <Route path="*" element={<Navigate replace to="/auth"/>}/>
+            <Route path="/auth" element={<AuthPage/>}/>
         </Routes>
     )
 }
