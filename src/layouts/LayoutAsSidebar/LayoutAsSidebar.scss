@@ -5,6 +5,8 @@
   grid-template-columns: $width-sidebar 1fr;
 
   &__content {
-    padding: 32px;
+    //Если шапку есть, то вкл это
+    //padding: 0 $space-content $space-content;
+    padding: $space-content;
   }
 }

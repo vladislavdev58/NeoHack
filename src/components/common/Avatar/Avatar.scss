@@ -1,0 +1,14 @@
+$size: 48px;
+
+.avatar{
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    width: $size;
+    height: $size;
+    object-fit: cover;
+  }
+}

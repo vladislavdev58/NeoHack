@@ -9,6 +9,7 @@ export const DashboardPage = () => {
     return (
         <LayoutAsSidebar>
             <div className="dashboard-page">
+                <h1>Hello, Flexer</h1>
                 <StockChart name="BITOC" data={data}/>
                 <StockChart name="BITOC" data={data}/>
                 <StockChart name="BITOC" data={data}/>
