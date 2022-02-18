@@ -14,7 +14,7 @@ export const AppRoutes = () => {
     return (
         <Routes>
             <Route path="*" element={<Navigate replace to="/auth"/>}/>
-            <Route path="/auth" element={<AuthPage/>}/>
+            <Route path="auth/*" element={<AuthPage/>}/>
         </Routes>
     )
 }

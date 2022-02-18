@@ -1,16 +1,16 @@
 import React from 'react'
-import {Card} from '../common/Card/Card'
 import {Form, Formik} from 'formik'
 import {TypeAuth} from '../../types/TypeAuth'
 import {REQUIRED_FILED} from '../../variables'
 import {Input} from '../common/Input/Input'
 import {Button} from '../common/Button/Button'
 import {Link} from 'react-router-dom'
+import {Card} from '../common/Card/Card'
 
-export const FormLogin = () => {
+export const FormRegistration = () => {
     return (
         <Card className="auth-page__form">
-            <h1 className="auth-page__title">Авторизация</h1>
+            <h1 className="auth-page__title">Регистрация</h1>
             <Formik
                 validateOnBlur={false}
                 validateOnChange={false}
@@ -34,14 +34,15 @@ export const FormLogin = () => {
             >
                 {({errors}) => (
                     <Form>
+                        <Input placeholder="Ваше имя" type="text" name="name" error={errors.email} theme="light"/>
                         <Input placeholder="E-mail" type="email" name="email" error={errors.email} theme="light"/>
                         <Input placeholder="Password" type="password" name="password" error={errors.password}
                                theme="light"/>
-                        <Button>Вход</Button>
+                        <Button>Зарегистрироваться</Button>
                     </Form>
                 )}
             </Formik>
-            <p>У вас нет аккаунта? <Link to='registration'>Зарегистрироваться</Link></p>
+            <p>У вас есть аккаунт? <Link to='/auth'>Войти</Link></p>
         </Card>
     )
 }
