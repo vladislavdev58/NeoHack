@@ -1,0 +1,23 @@
+@import '../scss/variables';
+.main-layout{
+  position: relative;
+  min-height: 100vh;
+  background-image: url('../assets/images/mainBg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+
+  &:after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $main-color;
+    opacity: .4;
+    z-index: -1;
+  }
+}
