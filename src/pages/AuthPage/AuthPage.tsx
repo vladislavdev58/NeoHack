@@ -1,5 +1,5 @@
 import React from 'react'
-import {MainLayout} from '../../layouts/MainLayout'
+import {MainLayout} from '../../layouts/MainLayout/MainLayout'
 import {FormLogin} from '../../components/FormLogin/FormLogin'
 import {FormRegistration} from '../../components/FormRegistration/FormRegistration'
 import {Route, Routes} from 'react-router-dom'

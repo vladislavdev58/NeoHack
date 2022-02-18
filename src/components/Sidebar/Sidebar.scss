@@ -1,0 +1,25 @@
+@import "../../scss/variables";
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: $main-color;
+  min-height: 100vh;
+  width: $width-sidebar;
+
+  &__logo {
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+
+  a {
+    padding: 5px;
+
+    &.active {
+      background-color: $secondary-color-light;
+      border-radius: 5px;
+    }
+  }
+}
