@@ -3,7 +3,7 @@ import './Sidebar.scss'
 import {LogoIcon} from '../common/Icons/LogoIcon'
 import {Link, NavLink} from 'react-router-dom'
 import {DashboardIcon} from '../common/Icons/DashboardIcon'
-import {PersonalIcon} from '../common/Icons/PersonalIcon'
+import {NotificationIcon} from '../common/Icons/NotificationIcon'
 
 export const Sidebar: FC = () => {
 
@@ -15,12 +15,12 @@ export const Sidebar: FC = () => {
                 </Link>
             </div>
 
-            <NavLink className={({isActive}) => isActive ? 'active' : ''} to="/personal">
-                <PersonalIcon width={32} height={32}/>
-            </NavLink>
-
             <NavLink className={({isActive}) => isActive ? 'active' : ''} to="/">
                 <DashboardIcon width={32} height={32}/>
+            </NavLink>
+
+            <NavLink className={({isActive}) => isActive ? 'active' : ''} to="/notification">
+                <NotificationIcon width={32} height={32}/>
             </NavLink>
 
         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import {Routes, Route, Navigate} from 'react-router-dom'
 import {AuthPage} from './pages/AuthPage/AuthPage'
 import {DashboardPage} from './pages/DashboardPage/DashboardPage'
+import {NotificationPage} from './pages/PersonalPage/NotificationPage'
 
 export const AppRoutes = () => {
     const auth = true
@@ -11,6 +12,7 @@ export const AppRoutes = () => {
         return (
             <Routes>
                 <Route path="/" element={<DashboardPage/>}/>
+                <Route path="/notification" element={<NotificationPage/>}/>
                 <Route path="*" element={<Navigate replace to="/"/>}/>
             </Routes>
         )

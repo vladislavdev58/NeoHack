@@ -16,10 +16,14 @@
 
   a {
     padding: 5px;
+    border-radius: 5px;
 
     &.active {
       background-color: $secondary-color-light;
-      border-radius: 5px;
+    }
+
+    &:hover{
+      background-color: $secondary-color-dark;
     }
   }
 }
