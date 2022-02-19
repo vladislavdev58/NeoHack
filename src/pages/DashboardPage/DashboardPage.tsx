@@ -12,7 +12,6 @@ export const DashboardPage = () => {
         <LayoutAsSidebar>
             <TwoColumnLayout infoComponent={<NotificationList/>}>
                 <div className="dashboard-page">
-                    <h1 className='dashboard-page__title'>Hello, Flexer</h1>
                     <div className="dashboard-page__content">
                         <StockChart name="BITOC" data={data}/>
                         <StockChart name="BITOC" data={data}/>
