@@ -6,10 +6,12 @@ import {Input} from '../common/Input/Input'
 import {Button} from '../common/Button/Button'
 import {Link} from 'react-router-dom'
 import {Card} from '../common/Card/Card'
+import {TextLogo} from '../common/TextLogo/TextLogo'
 
 export const FormRegistration = () => {
     return (
         <Card className="auth-page__form">
+            <TextLogo isCentering={true} isSpaceBottom={true}/>
             <h1 className="auth-page__title">Регистрация</h1>
             <Formik
                 validateOnBlur={false}
