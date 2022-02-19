@@ -10,7 +10,7 @@ export const LayoutAsSidebar: FC = ({children}) => {
             <div className="layout-sidebar">
                 <Sidebar/>
                 <div className="layout-sidebar__content">
-                    {/*<Header/>*/}
+                    <Header/>
                     {children}
                 </div>
             </div>

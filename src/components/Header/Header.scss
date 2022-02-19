@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import "../../scss/variables";
 
 .header {
@@ -7,4 +8,10 @@
   gap: 16px;
   margin-bottom: $space-content;
   padding-top: $space-content;
+
+  &__title{
+    margin-right: auto;
+    font-size: 64px;
+    font-family: 'Bebas Neue', cursive;
+  }
 }
