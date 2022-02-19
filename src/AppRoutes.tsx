@@ -5,7 +5,7 @@ import {DashboardPage} from './pages/DashboardPage/DashboardPage'
 import {NotificationPage} from './pages/PersonalPage/NotificationPage'
 
 export const AppRoutes = () => {
-    const auth = true
+    const auth = false
 
     // Если авторизирован
     if (auth) {

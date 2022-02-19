@@ -7,6 +7,7 @@ import {Input} from '../common/Input/Input'
 import {Button} from '../common/Button/Button'
 import {Link} from 'react-router-dom'
 import {TextLogo} from '../common/TextLogo/TextLogo'
+import axios from 'axios'
 
 export const FormLogin = () => {
     return (
@@ -30,6 +31,7 @@ export const FormLogin = () => {
                 }
                 onSubmit={
                     (values) => {
+                        axios.post('/api/auth/login',values)
                         console.log(values)
                     }
                 }
