@@ -27,7 +27,7 @@ export const StockChart: FC<MyProps> = ({name, data}) => {
 
     return (
         <Card>
-            <h1 className="stock-chart__title">{name}</h1>
+            <h2 className="stock-chart__title">{name}</h2>
             <HighchartsReact
                 highcharts={Highcharts}
                 constructorType={'stockChart'}

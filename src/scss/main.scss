@@ -27,6 +27,18 @@ h1 {
   }
 }
 
+h2 {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 29px;
+  margin: 0;
+
+  @media (min-width: 980px) {
+    font-size: 32px;
+    line-height: 44px;
+  }
+}
+
 a{
   color: $secondary-color;
   transition: all .2s linear;

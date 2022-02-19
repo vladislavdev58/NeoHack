@@ -3,17 +3,23 @@ import {LayoutAsSidebar} from '../../layouts/LayoutAsSidebar/LayoutAsSidebar'
 import {StockChart} from '../../components/common/StockChart/StockChart'
 import './DashboardPage.scss'
 import data from '../../json/stockData.json'
+import {TwoColumnLayout} from '../../layouts/TwoColoumnLayout/TwoColumnLayout'
+import {NotificationList} from '../../components/NotificationList/NotificationList'
 
 export const DashboardPage = () => {
 
     return (
         <LayoutAsSidebar>
-            <div className="dashboard-page">
-                <h1>Hello, Flexer</h1>
-                <StockChart name="BITOC" data={data}/>
-                <StockChart name="BITOC" data={data}/>
-                <StockChart name="BITOC" data={data}/>
-            </div>
+            <TwoColumnLayout infoComponent={<NotificationList/>}>
+                <div className="dashboard-page">
+                    <h1 className='dashboard-page__title'>Hello, Flexer</h1>
+                    <div className="dashboard-page__content">
+                        <StockChart name="BITOC" data={data}/>
+                        <StockChart name="BITOC" data={data}/>
+                        <StockChart name="BITOC" data={data}/>
+                    </div>
+                </div>
+            </TwoColumnLayout>
         </LayoutAsSidebar>
     )
 }
