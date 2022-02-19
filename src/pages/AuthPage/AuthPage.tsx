@@ -8,11 +8,13 @@ import './AuthPage.scss'
 export const AuthPage = () => {
     return (
         <MainLayout>
-            <div className="auth-page">
-                <Routes>
-                    <Route path={'*'} element={<FormLogin/>}/>
-                    <Route path={'registration'} element={<FormRegistration/>}/>
-                </Routes>
+            <div className="container">
+                <div className="auth-page">
+                    <Routes>
+                        <Route path={'*'} element={<FormLogin/>}/>
+                        <Route path={'registration'} element={<FormRegistration/>}/>
+                    </Routes>
+                </div>
             </div>
         </MainLayout>
     )

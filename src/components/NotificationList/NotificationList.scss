@@ -1,6 +1,39 @@
 .notification-list {
-  &__title{
+
+  &__header {
+    display: flex;
+    align-items: center;
+    
+    @media (max-width: 439px) {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    & button {
+      margin-left: auto;
+
+      @media (max-width: 439px) {
+        margin-left: unset;
+      }
+
+      @media (min-width: 1600px) {
+        display: none;
+      }
+    }
+  }
+
+  &__title {
     font-size: 24px;
-    margin: 0 0 25px;
+    margin: 0;
+  }
+
+  &__items {
+    margin-top: 25px;
+    &.hide {
+      display: none;
+      @media (min-width: 1600px) {
+        display: block;
+      }
+    }
   }
 }

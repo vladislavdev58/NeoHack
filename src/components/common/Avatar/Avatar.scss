@@ -1,10 +1,14 @@
 $size: 48px;
 
-.avatar{
+.avatar {
   width: $size;
   height: $size;
   border-radius: 50%;
   overflow: hidden;
+
+  @media (max-width: 439px) {
+    display: none;
+  }
 
   img {
     width: $size;

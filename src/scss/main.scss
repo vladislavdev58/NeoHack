@@ -13,6 +13,10 @@ body {
   line-height: 22px;
   color: $text-color;
   background: $main-color;
+
+  &.block {
+    overflow-y: hidden;
+  }
 }
 
 h1 {
@@ -58,4 +62,9 @@ p.message_error {
   font-size: 18px;
   line-height: 32px;
   color: $warning-color;
+}
+
+.container {
+  min-width: 320px;
+  padding: 0 15px;
 }

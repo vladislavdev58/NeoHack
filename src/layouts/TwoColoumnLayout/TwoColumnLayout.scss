@@ -1,6 +1,10 @@
 .two-column-layout{
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 280px 1fr;
   align-items: start;
   gap: 30px;
+  
+  @media (max-width: 1599px) {
+    grid-template-columns: 1fr;
+  }
 }
