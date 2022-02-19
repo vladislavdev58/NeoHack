@@ -15,8 +15,8 @@ export const NotificationPage = () => {
                     <NotificationSubs name="Все криптовалюты" isSubscribe={true} isAll={true}/>
 
                     <NotificationSubs name="Bitoc" isSubscribe={true}/>
-                    <NotificationSubs name="Hrenoc" isSubscribe={false}/>
-                    <NotificationSubs name="Pupok" isSubscribe={false}/>
+                    <NotificationSubs name="StarkCoin" isSubscribe={false}/>
+                    <NotificationSubs name="IlonCoin" isSubscribe={false}/>
                 </div>
             </Card>
         </LayoutAsSidebar>
