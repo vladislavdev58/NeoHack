@@ -1,0 +1,19 @@
+@import "../../../scss/variables";
+
+.notification-dropdown{
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 360px;
+  background: $secondary-color;
+  border-radius: 8px;
+
+  &__item {
+    padding: 5px 10px;
+    border-bottom: 2px solid #000;
+
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+}

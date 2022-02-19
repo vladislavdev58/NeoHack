@@ -1,26 +1,26 @@
 @import "../../../scss/variables";
 
-.notification{
+.notification {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid $secondary-color-light;
 
-  &:after{
-    content: attr(data-number);
-    position: absolute;
-    top: 0;
-    right: 0;
+  &__icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
-    font-size: 14px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid $secondary-color-light;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 12px;
+    height: 12px;
     background-color: $secondary-color;
     border-radius: 50%;
   }

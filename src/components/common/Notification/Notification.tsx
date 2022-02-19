@@ -1,15 +1,20 @@
-import React, {FC} from 'react'
+import React, {useState} from 'react'
 import './Notification.scss'
 import {NotificationIcon} from '../Icons/NotificationIcon'
+import {NotificationDropdown} from '../NotificationDropdown/NotificationDropdown'
 
-type MyProps = {
-    num: number
-}
+export const Notification = () => {
+    const [isShow, setIsShow] = useState(false)
 
-export const Notification:FC<MyProps> = ({num}) => {
+    const data:string[] = ['hello']
+    const num = data.length
+
     return (
         <div className='notification' data-number={num > 99 ? '99+' : num}>
-            <NotificationIcon width={22} height={22}/>
+            <div className="notification__icon" onClick={() => setIsShow(!isShow)}>
+                <NotificationIcon width={22} height={22}/>
+            </div>
+            {isShow && <NotificationDropdown data={data} setIsShow={setIsShow}/>}
         </div>
     )
 }

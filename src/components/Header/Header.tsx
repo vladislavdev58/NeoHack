@@ -15,7 +15,7 @@ export const Header:FC<MyProps> = ({isOpenMenu, setIsOpenMenu}) => {
         <div className='header'>
             <Burger isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu}/>
             <TextLogo/>
-            <Notification num={9}/>
+            <Notification/>
             <Avatar url='https://cdnimg.rg.ru/i/gallery/e9f32f77/12_4967d989.jpg'/>
         </div>
     )
