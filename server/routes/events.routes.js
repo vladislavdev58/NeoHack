@@ -32,7 +32,7 @@ router.post('/', auth, async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
     try {
         const id = req.params.id
-        await Event.findOneAndRemove({parent: id})
+        await Event.findOneAndRemove({parent: id, owner: req.user.userId})
         const events = await Event.find({owner: req.user.userId})
         res.status(200).json({events})
     } catch (e) {
