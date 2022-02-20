@@ -20,7 +20,11 @@ export const NotificationPage = observer(() => {
                 <div className="personal-page__list">
                     {CoinStore.coins &&
                         CoinStore.coins.map((item: TypeCoin) =>
-                            <NotificationSubs key={item._id} name={item.name} isSubscribe={true}/>
+                            <NotificationSubs
+                                key={item._id}
+                                name={item.name}
+                                isSubscribe={false}
+                                id={item._id}/>
                         )
                     }
                 </div>

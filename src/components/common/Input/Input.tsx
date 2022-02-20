@@ -5,7 +5,7 @@ import './Input.scss'
 
 type MyProps = {
     placeholder: string
-    type: 'text' | 'email' | 'password'
+    type: 'text' | 'email' | 'password' | 'number'
     name: string
     error?: string
     disabled?: boolean
