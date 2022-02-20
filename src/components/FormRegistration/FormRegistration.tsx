@@ -18,9 +18,14 @@ export const FormRegistration = () => {
             })
             .catch((err: any) => {
                 console.log(err.response.data)
-                err.response.data.errors.forEach((err: any) => {
-                    actions.setFieldError(err.param, err.msg)
-                })
+                if (err.response.data.errors) {
+                    err.response.data.errors.forEach((err: any) => {
+                        actions.setFieldError(err.param, err.msg)
+                    })
+                }
+                else if (err.response.data.message) {
+                    alert(err.response.data.message)
+                }
             })
     }
     return (
