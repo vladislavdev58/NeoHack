@@ -1,7 +1,8 @@
 import {runInAction} from 'mobx'
 import CoinStore from '../store/CoinStore'
-import {api} from '../api/api'
 import {candlesAPIRoutes} from '../config/routes.config'
+import axios from 'axios'
+import {API_HEADERS} from '../config/api.config'
 
 export const getOne = async () => {
     runInAction(() => {
@@ -9,7 +10,11 @@ export const getOne = async () => {
     })
 
     try {
-        const result = await api.get(candlesAPIRoutes.get())
+        const result = await axios.get(candlesAPIRoutes.get(), {
+            headers: {
+                ...API_HEADERS
+            }
+        })
         console.log(result)
     } catch (e) {
 

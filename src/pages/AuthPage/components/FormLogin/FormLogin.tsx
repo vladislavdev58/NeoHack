@@ -1,22 +1,25 @@
 import React, {useState} from 'react'
-import {Card} from '../common/Card/Card'
+import {Card} from '../../../../components/common/Card/Card'
 import {Form, Formik, FormikHelpers} from 'formik'
-import {TypeAuth} from '../../types/TypeAuth'
-import {REQUIRED_FILED} from '../../variables'
-import {Input} from '../common/Input/Input'
-import {Button} from '../common/Button/Button'
+import {TypeAuth} from '../../../../types/TypeAuth'
+import {REQUIRED_FILED} from '../../../../variables'
+import {Input} from '../../../../components/common/Input/Input'
+import {Button} from '../../../../components/common/Button/Button'
 import {Link} from 'react-router-dom'
-import {TextLogo} from '../common/TextLogo/TextLogo'
+import {TextLogo} from '../../../../components/common/TextLogo/TextLogo'
 import axios from 'axios'
-import {api} from '../../api/api'
-import {ROUTES_PREFIX} from '../../config/api.config'
+import {API_HEADERS, ROUTES_PREFIX} from '../../../../config/api.config'
 import {useCookies} from 'react-cookie'
 
 export const FormLogin = () => {
     const [errorMsg, setErrorMsg] = useState('')
     const [cookies, setCookies] = useCookies()
     const submitHandle = (values: TypeAuth, actions: FormikHelpers<TypeAuth>) => {
-        api.post(`${ROUTES_PREFIX}/auth/login`, {email: values.email, password: values.password})
+        axios.post(`${ROUTES_PREFIX}/auth/login`, {email: values.email, password: values.password}, {
+            headers: {
+                ...API_HEADERS
+            }
+        })
             .then(r => {
                 if (r.data.token) {
                     setCookies('Auth-Token', r.data.token, {path: '/'})
