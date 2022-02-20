@@ -1,13 +1,19 @@
 import React from 'react'
 import './NotificationCard.scss'
 
-export const NotificationCard = () => {
+type NotificationCardProps = {
+    name: string
+    min: number
+    max: number
+}
+
+export const NotificationCard = ({name, min, max}: NotificationCardProps) => {
     return (
         <div className='notification-card'>
-            <p className='notification-card__title'>Bitcoin</p>
+            <p className='notification-card__title'>{name}</p>
             <div className="">
-                <p>ниже 6000</p>
-                <p>выше 7000</p>
+                <p>ниже {min}</p>
+                <p>выше {max}</p>
             </div>
         </div>
     )
