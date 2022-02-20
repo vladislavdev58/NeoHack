@@ -14,6 +14,9 @@ router.post(
             .isLength({min: 6})
     ],
     async (req, res) => {
+        console.log('==== НАЧАЛО req.body ====')
+        console.log(req.body)
+        console.log('==== КОНЕЦ req.body ====')
         try {
             const errors = validationResult(req)
 
