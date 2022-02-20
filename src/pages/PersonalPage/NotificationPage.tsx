@@ -10,12 +10,12 @@ import {TypeCoin} from '../../types/TypeCoin'
 export const NotificationPage = observer(() => {
     useEffect(() => {
         CoinStore.getCoins()
+        CoinStore.getNotifications()
     }, [])
     return (
         <LayoutAsSidebar>
             <Card className="personal-page">
                 <h1 className="personal-page__title">Подписка на уведомления</h1>
-
 
                 <div className="personal-page__list">
                     {CoinStore.coins &&
