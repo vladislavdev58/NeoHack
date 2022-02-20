@@ -15,7 +15,11 @@ router.get('/', auth, async (req, res) => {
 router.post('/', auth, async (req, res) => {
     try {
         const {name, min, max} = req.body
-        const newEvent = new Event({name, max, min})
+        const find = await Event.find({owner: req.user.userId, name})
+        if (find) {
+            return res.status(400).json({message: 'Вы уже подписаны'})
+        }
+        const newEvent = new Event({name, max, min, owner: req.user.userId})
         await newEvent.save()
         const events = await Event.find({owner: req.user.userId})
         res.status(200).json({events})
