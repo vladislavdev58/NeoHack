@@ -1,5 +1,6 @@
 export type TypeCoin = {
 	_id: string,
 	name: string,
-	__v: number
+	__v: number,
+	isEvent: boolean
 }
