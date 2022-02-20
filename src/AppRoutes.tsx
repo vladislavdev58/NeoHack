@@ -4,17 +4,21 @@ import {AuthPage} from './pages/AuthPage/AuthPage'
 import {DashboardPage} from './pages/DashboardPage/DashboardPage'
 import {NotificationPage} from './pages/PersonalPage/NotificationPage'
 import {useCookies} from 'react-cookie'
+import UserStore from './store/UserStore'
+import {observer} from 'mobx-react-lite'
+import {runInAction} from 'mobx'
 
-export const AppRoutes = () => {
-    const [auth, setAuth] = useState(false)
-    const [cookies, setCookies] = useCookies()
+export const AppRoutes = observer(() => {
+    const [cookies] = useCookies()
     useEffect(() => {
         if (cookies['Auth-Token']) {
-            setAuth(true)
+            runInAction(() => {
+                UserStore.token = cookies['Auth-Token']
+            })
         }
     }, [cookies])
     // Если авторизирован
-    if (auth) {
+    if (UserStore.token) {
         return (
             <Routes>
                 <Route path="/" element={<DashboardPage/>}/>
@@ -31,4 +35,4 @@ export const AppRoutes = () => {
             <Route path="auth/*" element={<AuthPage/>}/>
         </Routes>
     )
-}
+})

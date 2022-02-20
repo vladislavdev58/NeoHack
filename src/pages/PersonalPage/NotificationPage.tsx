@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './NotificationPage.scss'
 import {LayoutAsSidebar} from '../../layouts/LayoutAsSidebar/LayoutAsSidebar'
 import {Card} from '../../components/common/Card/Card'
 import {NotificationSubs} from '../../components/NotificationSubs/NotificationSubs'
+import CoinStore from '../../store/CoinStore'
+import {observer} from 'mobx-react-lite'
+import {TypeCoin} from '../../types/TypeCoin'
 
-export const NotificationPage = () => {
+export const NotificationPage = observer(() => {
+    useEffect(() => {
+        CoinStore.getCoins()
+    }, [])
     return (
         <LayoutAsSidebar>
             <Card className="personal-page">
@@ -12,13 +18,13 @@ export const NotificationPage = () => {
 
 
                 <div className="personal-page__list">
-                    <NotificationSubs name="Все криптовалюты" isSubscribe={true} isAll={true}/>
-
-                    <NotificationSubs name="Bitoc" isSubscribe={true}/>
-                    <NotificationSubs name="StarkCoin" isSubscribe={false}/>
-                    <NotificationSubs name="IlonCoin" isSubscribe={false}/>
+                    {CoinStore.coins &&
+                        CoinStore.coins.map((item: TypeCoin) =>
+                            <NotificationSubs key={item._id} name={item.name} isSubscribe={true}/>
+                        )
+                    }
                 </div>
             </Card>
         </LayoutAsSidebar>
     )
-}
+})
