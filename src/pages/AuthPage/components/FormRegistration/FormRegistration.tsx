@@ -64,7 +64,7 @@ export const FormRegistration = () => {
                 onSubmit={submitHandle}>
                 {({errors}) => (
                     <Form>
-                        <Input placeholder="Ваше имя" type="text" name="name" error={errors.email} theme="light"/>
+                        {/*<Input placeholder="Ваше имя" type="text" name="name" error={errors.email} theme="light"/>*/}
                         <Input placeholder="E-mail" type="email" name="email" error={errors.email} theme="light"/>
                         <Input placeholder="Пароль" type="password" name="password" error={errors.password} theme="light"/>
                         {errorMsg && <p className='message_error'>{errorMsg}</p>}
