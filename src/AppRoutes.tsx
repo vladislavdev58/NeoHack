@@ -1,12 +1,18 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Routes, Route, Navigate} from 'react-router-dom'
 import {AuthPage} from './pages/AuthPage/AuthPage'
 import {DashboardPage} from './pages/DashboardPage/DashboardPage'
 import {NotificationPage} from './pages/PersonalPage/NotificationPage'
+import {useCookies} from 'react-cookie'
 
 export const AppRoutes = () => {
-    const auth = false
-
+    const [auth, setAuth] = useState(false)
+    const [cookies, setCookies] = useCookies()
+    useEffect(() => {
+        if (cookies['Auth-Token']) {
+            setAuth(true)
+        }
+    }, [cookies])
     // Если авторизирован
     if (auth) {
         return (

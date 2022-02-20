@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Form, Formik, FormikHelpers} from 'formik'
 import {TypeAuth} from '../../types/TypeAuth'
 import {REQUIRED_FILED} from '../../variables'
@@ -7,24 +7,33 @@ import {Button} from '../common/Button/Button'
 import {Link} from 'react-router-dom'
 import {Card} from '../common/Card/Card'
 import {TextLogo} from '../common/TextLogo/TextLogo'
-import {register} from '../../services/registration.services'
+import {useCookies} from 'react-cookie'
+import {api} from '../../api/api'
+import {ROUTES_PREFIX} from '../../config/api.config'
 
 export const FormRegistration = () => {
+    const [errorMsg, setErrorMsg] = useState('')
+    const [cookies, setCookies] = useCookies()
     const submitHandle = (values: TypeAuth, actions: FormikHelpers<TypeAuth>) => {
         console.log(values)
-        register(values.email, values.password)
+        //сбрасываем ошибку
+        setErrorMsg('')
+        api.post(`${ROUTES_PREFIX}/auth/register`, {email: values.email, password: values.password})
             .then((r: any) => {
-                console.log(r.errors)
+                console.log(r.data.message)
+                console.log(r.data.token)
+                if (r.data.token) {
+                    setCookies('Auth-Token', r.data.token, {path: '/'})
+                }
             })
             .catch((err: any) => {
-                console.log(err.response.data)
                 if (err.response.data.errors) {
                     err.response.data.errors.forEach((err: any) => {
                         actions.setFieldError(err.param, err.msg)
                     })
                 }
                 else if (err.response.data.message) {
-                    alert(err.response.data.message)
+                    setErrorMsg(err.response.data.message)
                 }
             })
     }
@@ -47,16 +56,13 @@ export const FormRegistration = () => {
                         return errors
                     }
                 }
-                onSubmit={
-                    (values, actions) => submitHandle(values, actions)
-                }
-            >
+                onSubmit={submitHandle}>
                 {({errors}) => (
                     <Form>
                         <Input placeholder="Ваше имя" type="text" name="name" error={errors.email} theme="light"/>
                         <Input placeholder="E-mail" type="email" name="email" error={errors.email} theme="light"/>
-                        <Input placeholder="Пароль" type="password" name="password" error={errors.password}
-                               theme="light"/>
+                        <Input placeholder="Пароль" type="password" name="password" error={errors.password} theme="light"/>
+                        {errorMsg && <p className='message_error'>{errorMsg}</p>}
                         <Button>Зарегистрироваться</Button>
                     </Form>
                 )}
