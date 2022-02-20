@@ -10,6 +10,7 @@ import {TypeAuth} from '../../types/TypeAuth'
 import CoinStore from '../../store/CoinStore'
 import {TypeNotification} from '../../types/TypeNotification'
 import {observer} from 'mobx-react-lite'
+import {runInAction} from 'mobx'
 
 type MyProps = {
     name: string
@@ -29,7 +30,6 @@ export const NotificationSubs: FC<MyProps> = observer(({
         setErrorMsg('')
         axios.post(`${ROUTES_PREFIX}/events`, {
             name,
-            id,
             min: values.min,
             max: values.max
         }, {
@@ -53,7 +53,7 @@ export const NotificationSubs: FC<MyProps> = observer(({
     const unsubscribeHandle = () => {
         axios.delete(`${ROUTES_PREFIX}/events`, {
             params: {
-                id
+                _id: id
             },
             headers: {
                 ...API_HEADERS,
@@ -62,7 +62,9 @@ export const NotificationSubs: FC<MyProps> = observer(({
         })
             .then(r => {
                 console.log(r)
-                CoinStore.getNotifications()
+                runInAction(() => {
+                    CoinStore.notifications = r.data.events
+                })
             })
             .catch(err => console.log(err))
     }
