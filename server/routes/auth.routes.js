@@ -37,7 +37,13 @@ router.post(
 
             await user.save()
 
-            res.status(201).json({message: 'Пользователь создан'})
+            const token = jwt.sign(
+                {userId: user._id},
+                config.get('jwtSecret'),
+                {expiresIn: '1h'}
+            )
+
+            res.status(201).json({message: 'Пользователь создан', token})
             console.log(`Новый пользователь - ${email} !!!`)
 
         } catch (e) {
