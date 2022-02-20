@@ -2,4 +2,10 @@
   &__title {
     font-size: 24px;
   }
+
+  &__wrap{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px;
+  }
 }

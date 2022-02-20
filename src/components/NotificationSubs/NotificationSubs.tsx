@@ -92,8 +92,17 @@ export const NotificationSubs: FC<MyProps> = observer(({
                         onSubmit={subscribeHandle}>
                         {({errors}) => (
                             <Form>
-                                <Input placeholder="Минимум" type={'number'} name="min" theme="light" error={errors.min}/>
-                                <Input placeholder="Максимум" type={'number'} name="max" theme="light" error={errors.max}/>
+                                <div className="notification-subs__wrap">
+                                    <div>
+                                        <label htmlFor="">Минимум</label>
+                                        <Input placeholder="Минимум" type={'number'} name="min" theme="light" error={errors.min}/>
+                                    </div>
+                                    <div>
+                                        <label htmlFor="">Максимум</label>
+                                        <Input placeholder="Максимум" type={'number'} name="max" theme="light" error={errors.max}/>
+                                    </div>
+                                </div>
+
                                 {errorMsg && <p className='message_error'>{errorMsg}</p>}
                                 <Button>Подписаться</Button>
                             </Form>
