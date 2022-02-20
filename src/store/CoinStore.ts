@@ -42,6 +42,21 @@ class CoinStore {
             })
             .catch(err => console.log(err))
     }
+
+    getCoinDataChart = () => {
+        axios.get(`${ROUTES_PREFIX}/candles`, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': `Bearer ${UserStore.token}`
+            }
+        })
+            .then(r => {
+                runInAction(() => {
+                    this.coinDataChart = r.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
 }
 
 export default new CoinStore()

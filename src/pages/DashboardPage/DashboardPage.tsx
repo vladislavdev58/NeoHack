@@ -7,10 +7,12 @@ import {TwoColumnLayout} from '../../layouts/TwoColoumnLayout/TwoColumnLayout'
 import {NotificationList} from '../../components/NotificationList/NotificationList'
 import CoinStore from '../../store/CoinStore'
 import {observer} from 'mobx-react-lite'
+import coinStore from '../../store/CoinStore'
 
 export const DashboardPage = observer(() => {
     useEffect(() => {
         CoinStore.getNotifications()
+        CoinStore.getCoinDataChart()
     }, [])
 
     return (
@@ -18,9 +20,11 @@ export const DashboardPage = observer(() => {
             <TwoColumnLayout infoComponent={<NotificationList/>}>
                 <div className="dashboard-page">
                     <div className="dashboard-page__content">
-                        <StockChart name="BITOC" data={data}/>
-                        <StockChart name="BITOC" data={data}/>
-                        <StockChart name="BITOC" data={data}/>
+                        {
+                            coinStore.coinDataChart.map((item: any) =>
+                                <StockChart name={item.name} data={item.dataChart}/>
+                            )
+                        }
                     </div>
                 </div>
             </TwoColumnLayout>

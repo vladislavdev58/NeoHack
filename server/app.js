@@ -9,6 +9,7 @@ app.use(express.json({extended: true}))
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/coins', require('./routes/coins.routes'))
 app.use('/api/events', require('./routes/events.routes'))
+app.use('/api/candles', require('./routes/candles.routes'))
 
 const PORT = config.get('port')
 const start = async () => {
