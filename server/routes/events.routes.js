@@ -14,12 +14,13 @@ router.get('/', auth, async (req, res) => {
 
 router.post('/', auth, async (req, res) => {
     try {
-        const {name, min, max} = req.body
+        const {name, min, max, parent} = req.body
+        console.log(req.body)
         const find = await Event.find({owner: req.user.userId, name})
         if (find.length) {
             return res.status(400).json({message: 'Вы уже подписаны'})
         }
-        const newEvent = new Event({name, max, min, owner: req.user.userId})
+        const newEvent = new Event({name, max, min, owner: req.user.userId, parent})
         await newEvent.save()
         const events = await Event.find({owner: req.user.userId})
         res.status(200).json({events})
@@ -28,10 +29,10 @@ router.post('/', auth, async (req, res) => {
     }
 })
 
-router.delete('/', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     try {
-        const {_id} = req
-        await Event.findByIdAndDelete(_id)
+        const id = req.params.id
+        await Event.findOneAndRemove({parent: id})
         const events = await Event.find({owner: req.user.userId})
         res.status(200).json({events})
     } catch (e) {

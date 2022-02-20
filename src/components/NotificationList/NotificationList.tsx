@@ -6,8 +6,9 @@ import {Button} from '../common/Button/Button'
 import clsx from 'clsx'
 import CoinStore from '../../store/CoinStore'
 import {TypeNotification} from '../../types/TypeNotification'
+import {observer} from 'mobx-react-lite'
 
-export const NotificationList = () => {
+export const NotificationList = observer(() => {
     const [isShow, setIsShow] = useState(false)
     useEffect(() => {
         CoinStore.getNotifications()
@@ -26,4 +27,4 @@ export const NotificationList = () => {
             </div>
         </Card>
     )
-}
+})

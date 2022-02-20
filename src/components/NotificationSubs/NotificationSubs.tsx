@@ -1,12 +1,11 @@
 import React, {FC, useState} from 'react'
 import './NotificationSubs.scss'
-import {Form, Formik, FormikHelpers} from 'formik'
+import {Form, Formik} from 'formik'
 import {Input} from '../common/Input/Input'
 import {Button} from '../common/Button/Button'
 import axios from 'axios'
 import {API_HEADERS, ROUTES_PREFIX} from '../../config/api.config'
 import UserStore from '../../store/UserStore'
-import {TypeAuth} from '../../types/TypeAuth'
 import CoinStore from '../../store/CoinStore'
 import {TypeNotification} from '../../types/TypeNotification'
 import {observer} from 'mobx-react-lite'
@@ -31,7 +30,8 @@ export const NotificationSubs: FC<MyProps> = observer(({
         axios.post(`${ROUTES_PREFIX}/events`, {
             name,
             min: values.min,
-            max: values.max
+            max: values.max,
+            parent: id
         }, {
             headers: {
                 ...API_HEADERS,
@@ -51,10 +51,7 @@ export const NotificationSubs: FC<MyProps> = observer(({
             })
     }
     const unsubscribeHandle = () => {
-        axios.delete(`${ROUTES_PREFIX}/events`, {
-            params: {
-                _id: id
-            },
+        axios.delete(`${ROUTES_PREFIX}/events/${id}`, {
             headers: {
                 ...API_HEADERS,
                 'Authorization': `Bearer ${UserStore.token}`

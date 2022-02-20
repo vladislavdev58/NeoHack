@@ -10,7 +10,6 @@ import {TextLogo} from '../../../../components/common/TextLogo/TextLogo'
 import {useCookies} from 'react-cookie'
 import {API_HEADERS, ROUTES_PREFIX} from '../../../../config/api.config'
 import axios from 'axios'
-import UserStore from '../../../../store/UserStore'
 
 export const FormRegistration = () => {
     const [errorMsg, setErrorMsg] = useState('')
@@ -64,7 +63,6 @@ export const FormRegistration = () => {
                 onSubmit={submitHandle}>
                 {({errors}) => (
                     <Form>
-                        {/*<Input placeholder="Ваше имя" type="text" name="name" error={errors.email} theme="light"/>*/}
                         <Input placeholder="E-mail" type="email" name="email" error={errors.email} theme="light"/>
                         <Input placeholder="Пароль" type="password" name="password" error={errors.password} theme="light"/>
                         {errorMsg && <p className='message_error'>{errorMsg}</p>}

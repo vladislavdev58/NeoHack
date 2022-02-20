@@ -10,7 +10,6 @@ import {TypeCoin} from '../../types/TypeCoin'
 export const NotificationPage = observer(() => {
     useEffect(() => {
         CoinStore.getCoins()
-        CoinStore.getNotifications()
     }, [])
     return (
         <LayoutAsSidebar>

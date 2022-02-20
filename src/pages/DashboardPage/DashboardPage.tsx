@@ -5,12 +5,12 @@ import './DashboardPage.scss'
 import data from '../../json/stockData.json'
 import {TwoColumnLayout} from '../../layouts/TwoColoumnLayout/TwoColumnLayout'
 import {NotificationList} from '../../components/NotificationList/NotificationList'
-import {getOne} from '../../services/candles.services'
+import CoinStore from '../../store/CoinStore'
+import {observer} from 'mobx-react-lite'
 
-export const DashboardPage = () => {
-
+export const DashboardPage = observer(() => {
     useEffect(() => {
-        getOne()
+        CoinStore.getNotifications()
     }, [])
 
     return (
@@ -26,4 +26,4 @@ export const DashboardPage = () => {
             </TwoColumnLayout>
         </LayoutAsSidebar>
     )
-}
+})
