@@ -1,3 +1,5 @@
+import React from 'react'
+
 export const PersonalIcon = (props: React.SVGProps<SVGSVGElement>) => {
     return (
         <svg
