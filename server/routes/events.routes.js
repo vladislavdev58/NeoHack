@@ -17,7 +17,19 @@ router.post('/', auth, async (req, res) => {
         const {name, min, max} = req.body
         const newEvent = new Event({name, max, min})
         await newEvent.save()
-        res.status(200).json({message: `Событие ${name} - сохранено`})
+        const events = await Event.find({owner: req.user.userId})
+        res.status(200).json({events})
+    } catch (e) {
+        res.status(500).json({message: 'Что-то пошло не так'})
+    }
+})
+
+router.delete('/', auth, async (req, res) => {
+    try {
+        const {_id} = req
+        await Event.findByIdAndDelete(_id)
+        const events = await Event.find({owner: req.user.userId})
+        res.status(200).json({events})
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так'})
     }
