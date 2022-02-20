@@ -6,6 +6,7 @@ import UserStore from './UserStore'
 class CoinStore {
     coinDataChart = []
     coins = []
+    notifications = []
     loading = false
 
     constructor() {
@@ -22,6 +23,21 @@ class CoinStore {
             .then(r => {
                 runInAction(() => {
                     this.coins = r.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+    getNotifications = () => {
+        axios.get(`${ROUTES_PREFIX}/events`, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': `Bearer ${UserStore.token}`
+            }
+        })
+            .then(r => {
+                runInAction(() => {
+                    this.notifications = r.data
                 })
             })
             .catch(err => console.log(err))
